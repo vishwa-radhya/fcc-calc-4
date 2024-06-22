@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+
+@mixin reuse-border{
+    border: 1px solid black;
+}
+@mixin flex-cent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin btn-deco{
+    border: none;
+    background-color: $calc-bg;
+    box-shadow: 3px 3px 10px 3px $blu-bs-clr,-3px -3px 10px 3px $wht-bs-clr;
+}
+@mixin container-deco{
+    box-shadow: inset 5px 5px 6px 3px rgba(149, 181, 177, 0.634),inset -5px -5px 6px 3px $wht-bs-clr;
+}
+
+$calc-bg:rgb(214, 250, 252);
+// $calc-bg:rgb(242, 254, 255);
+$bg-clr:rgb(202, 255, 249);
+// $bg-clr:rgb(236, 255, 252);
+$wht-bs-clr:rgba(255, 255, 255, 0.527);
+$blu-bs-clr:rgba(46, 144, 153, 0.414);
+#root{
+    height: 100vh;
+    width: 100vw;
+    @include flex-cent;
+    background-color: $bg-clr;
+}
+.calc-container{
+    // @include reuse-border;
+    width: min(400px,99vw);
+    height: min(550px,95vh);
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem;
+    gap: 0.5rem;
+    background-color: $calc-bg;
+    border-radius: 2rem;
+    box-shadow: 5px 5px 10px 4px $blu-bs-clr,-5px -5px 17px 4px $wht-bs-clr;
+}
+.display-container{
+    // @include reuse-border;
+    height: 15%;
+    border-radius: 1rem;
+    @include container-deco;
+}
+.operators-container{
+    // @include reuse-border;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding: 10px;
+
+
+    .upper-div{
+        // @include reuse-border;
+        height: 60%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 5px;
+    }
+
+    .lower-div{
+        // @include reuse-border;
+        flex: 1;
+        display: flex;
+
+        .big-lower{
+            // @include reuse-border;
+            width: 75%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 5px;
+        }
+
+        .small-lower{
+            // @include reuse-border;
+            flex: 1;
+            @include flex-cent;
+        }
+    }
+}
+.upper-div button{
+    width: 20%;
+    height: 28%;
+    border-radius: 50%;
+    @include btn-deco;
+}
+.big-lower button{
+    width: 27.5%;
+    height: 43%;
+    border-radius: 50%;
+    @include btn-deco;
+}
+.small-lower button{
+    height: 90%;
+    width: 70%;
+    border-radius: 30px;
+    border: none;
+    background-color: rgb(161, 167, 250);
+    box-shadow:inset 10px 10px 10px 5px rgb(130, 135, 211),3px 3px 10px 3px rgba(112, 179, 255, 0.859),-3px -3px 10px 3px $wht-bs-clr,inset -5px -5px 10px 3px rgba(216, 197, 255, 0.527);
+}
+button{
+    outline: none;
+    font-size: 2.3rem;
+    color: rgb(55, 26, 26);
+}
+button:hover{
+    filter: brightness(105%);
+}
+button:active:focus,button:focus{
+    box-shadow:inset -3px -3px 10px 3px $wht-bs-clr,inset  3px 3px 10px 3px $blu-bs-clr;
+}
