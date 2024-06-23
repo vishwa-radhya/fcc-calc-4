@@ -1,11 +1,14 @@
 import './App.scss'
 import Calculator from './calculator'
+import { InputProvider } from './input-context'
 
 function App() {
 
   return (
     <>
-      <Calculator/>
+      <InputProvider>
+        <Calculator/>
+      </InputProvider>
     </>
   )
 }

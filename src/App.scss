@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 *{
     margin: 0;
     box-sizing: border-box;
@@ -34,6 +36,8 @@ $blu-bs-clr:rgba(46, 144, 153, 0.414);
     width: 100vw;
     @include flex-cent;
     background-color: $bg-clr;
+    
+    // font-style: normal;
 }
 .calc-container{
     // @include reuse-border;
@@ -48,10 +52,37 @@ $blu-bs-clr:rgba(46, 144, 153, 0.414);
     box-shadow: 5px 5px 10px 4px $blu-bs-clr,-5px -5px 17px 4px $wht-bs-clr;
 }
 .display-container{
-    // @include reuse-border;
     height: 15%;
     border-radius: 1rem;
     @include container-deco;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .input-query{
+        height: 40%;
+        width: 100%;
+        box-shadow: inset 5px 5px 6px 3px $blu-bs-clr,inset -5px 0px 6px 3px $wht-bs-clr;
+        border: none;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: $calc-bg;
+    }
+    .input-solution{
+        width: 100%;
+        border: none;
+        box-shadow:inset -5px -5px 6px 3px $wht-bs-clr,inset 5px 0px 6px 3px $blu-bs-clr,inset 0px 5px 5px 3px rgb(234, 255, 255);
+        background-color: $calc-bg;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        flex: 1;
+        text-align: right;
+    font-size: 2.3rem;
+        color: rgb(84, 79, 236);
+        letter-spacing: 0.2rem;
+        font-family: "Chakra Petch", sans-serif;
+    font-weight: 500;
+    }
 }
 .operators-container{
     // @include reuse-border;
@@ -116,6 +147,8 @@ button{
     outline: none;
     font-size: 2.3rem;
     color: rgb(55, 26, 26);
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 500;
 }
 button:hover{
     filter: brightness(105%);
