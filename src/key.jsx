@@ -16,11 +16,14 @@ const Key=({innerText})=>{
             }else if(key ==='/'){
                 btnContent='÷';
             }
+            if(key==='Enter'){
+                btnContent='=';
+            }
             if(btnContent === innerText){
-                handleButtonClick(event,true);
+                handleButtonClick(innerText);
             }
             if(key===innerText.toLowerCase() || key.toLowerCase() === innerText){
-                handleButtonClick(event,true);
+                handleButtonClick(innerText);
             }
             
         }
@@ -36,11 +39,9 @@ const Key=({innerText})=>{
     function handleBlur(){
         setIsFocused(false);
     }
-    function handleButtonClick(e,fromKeyboard = false){
+    function handleButtonClick(innerText){
 
-        if(!fromKeyboard){
-            e.preventDefault();
-        }
+        
         setIsFocused(true);
         inputTextSetter(innerText);
         setTimeout(()=>{
@@ -53,7 +54,7 @@ const Key=({innerText})=>{
     }
 
     return(
-        <button onClick={(e)=>handleButtonClick(e,false)} onBlur={handleBlur} style={isFocused ? focusStyles:{}}>{innerText}</button>
+        <button onClick={(e)=>handleButtonClick(e.target.innerText,false)} onBlur={handleBlur} style={isFocused ? focusStyles:{}}>{innerText}</button>
     )
 }
 Key.propTypes={

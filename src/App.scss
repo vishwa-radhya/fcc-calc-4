@@ -156,3 +156,6 @@ button:hover{
 button:active:focus,button:focus{
     box-shadow:inset -3px -3px 10px 3px $wht-bs-clr,inset  3px 3px 10px 3px $blu-bs-clr;
 }
+input{
+    outline: none;
+}
