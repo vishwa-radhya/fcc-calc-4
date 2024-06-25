@@ -7,13 +7,31 @@ export const InputContext = createContext();
 export const InputProvider =({children})=>{
 
     const [inputText,setInputText]=useState('0');
+    const [solutionText,setSolutionText]=useState('');
+
+    function reduceOutput(evaluatedValue){
+        if(/[.]/.test(evaluatedValue)){
+            let rtnValue = evaluatedValue.split('.');
+            if(rtnValue[1].length>3){
+                let val = rtnValue[0]+'.'+rtnValue[1].slice(0,3);
+                return val;
+            }
+        }
+        return evaluatedValue;
+    }
 
     function calculateValue(val){
         let query=val;
         query=query.replace(/[×]/g,'*');
         query=query.replace(/[÷]/g,'/');
         try{
-        return eval(query);
+        let evaluatedValue= eval(query);
+        if(evaluatedValue.toString().length>14){
+            let evalVal =evaluatedValue.toString();
+            evaluatedValue=reduceOutput(evalVal);
+        }
+        setSolutionText(val+'='+evaluatedValue);
+        return evaluatedValue;
         }catch(e){
             console.log(e);
             return val;
@@ -21,27 +39,18 @@ export const InputProvider =({children})=>{
     }
 
     function doublDecimalCheck(val){
-        let hasDecimal = false; // Flag to track if a decimal has been encountered
-
-        // Iterate through each character in the input string
-        for (let i = 0; i < val.length; i++) {
-          const char = val[i];
-      
-          // Check for operators
-          if (char.match(/([+-×÷%])/)) {
-            hasDecimal = false; // Reset decimal flag after an operator
-          } else if (char === '.') {
-            // Enforce single decimal per number
-            if (hasDecimal) {
-              val = val.slice(0, i) + val.slice(i + 1); // Remove the duplicate decimal
-            } else {
-              hasDecimal = true;
+        let len = val.length-1;
+        let count=0;
+        while(!['+','-','×','÷','%'].includes(val[len]) && val[len]){
+            if(val[len]==='.'){
+                count+=1;
             }
-          }
+            len-=1;
         }
-      
+        if(count>1){
+            return val.slice(0,val.length-1);
+        }
         return val;
-
     }
     
 
@@ -82,6 +91,7 @@ export const InputProvider =({children})=>{
         if(newText==='C'){ 
 
             val='0';
+            setSolutionText('');
 
         }
 
@@ -89,7 +99,9 @@ export const InputProvider =({children})=>{
             val=' 0.';
         }
 
-        val=doublDecimalCheck(val);       
+        if(newText==='.'){
+            val=doublDecimalCheck(val);       
+        }
 
         if(newText==='='){
             val=calculateValue(inputText);
@@ -104,7 +116,7 @@ export const InputProvider =({children})=>{
     }
 
     return(
-        <InputContext.Provider value={{inputText,inputTextSetter}}>
+        <InputContext.Provider value={{inputText,inputTextSetter,solutionText}}>
             {children}
         </InputContext.Provider>
     )

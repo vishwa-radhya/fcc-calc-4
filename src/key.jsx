@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { InputContext } from "./input-context";
 import PropTypes from 'prop-types';
-const Key=({innerText})=>{
+const Key=({innerText,id})=>{
 
     const {inputTextSetter}=useContext(InputContext);
     const [isFocused,setIsFocused]=useState(false);
@@ -54,10 +54,11 @@ const Key=({innerText})=>{
     }
 
     return(
-        <button onClick={(e)=>handleButtonClick(e.target.innerText,false)} onBlur={handleBlur} style={isFocused ? focusStyles:{}}>{innerText}</button>
+        <button onClick={(e)=>handleButtonClick(e.target.innerText,false)} onBlur={handleBlur} style={isFocused ? focusStyles:{}} id={id}>{innerText}</button>
     )
 }
 Key.propTypes={
     innerText:PropTypes.string,
+    id:PropTypes.string,
 }
 export default Key;
