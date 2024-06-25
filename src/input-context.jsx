@@ -12,8 +12,8 @@ export const InputProvider =({children})=>{
     function reduceOutput(evaluatedValue){
         if(/[.]/.test(evaluatedValue)){
             let rtnValue = evaluatedValue.split('.');
-            if(rtnValue[1].length>3){
-                let val = rtnValue[0]+'.'+rtnValue[1].slice(0,3);
+            if(rtnValue[1].length>=3){
+                let val = rtnValue[0]+'.'+rtnValue[1].slice(0,4);
                 return val;
             }
         }
@@ -33,7 +33,7 @@ export const InputProvider =({children})=>{
         setSolutionText(val+'='+evaluatedValue);
         return evaluatedValue;
         }catch(e){
-            console.log(e);
+            setSolutionText('INVALID OPERATION');
             return val;
         }
     }
@@ -56,6 +56,10 @@ export const InputProvider =({children})=>{
 
     function calcFunctionalityHandler(newText){
         
+        if(solutionText ==='INVALID OPERATION'){
+            setSolutionText('');
+        }
+
         let val;
         const operatorArray=['+','-','×','÷','%','.'];
         if(newText==='⇐'){
@@ -68,24 +72,27 @@ export const InputProvider =({children})=>{
 
         val = inputText+newText;
 
-            if(operatorArray.includes(val[val.length-1]) && operatorArray.includes(val[val.length-2])){
+            // if(operatorArray.includes(val[val.length-1]) && operatorArray.includes(val[val.length-2])){
 
-                val=val.slice(0,inputText.length);
+            //     val=val.slice(0,inputText.length);
    
+            // }
+            if((operatorArray.includes(val[val.length-1]) && operatorArray.includes(val[val.length-2]))&& (val[val.length-1]===val[val.length-2])){
+                val=val.slice(0,inputText.length);
             }
 
         }
 
-        if(val[0]==='0' ||val[0]==='+' || val[0]==='-' || val[0]==='×' || val[0]==='÷' || val[0]==='%'){
+        if(val[0]==='0'){
 
             val=val.slice(1);
 
-            if(val[0]==='+' || val[0]==='-' || val[0]==='×' || val[0]==='÷' || val[0]==='%'){
+        }
 
-                val=val.slice(1);
+        if(val ==='+' || val ==='-' || val ==='×' || val ==='÷' || val ==='%'){
 
-            }
-
+            val=val.slice(1);
+            
         }
 
         if(newText==='C'){ 

@@ -37,7 +37,6 @@ $blu-bs-clr:rgba(46, 144, 153, 0.414);
     @include flex-cent;
     background-color: $bg-clr;
     
-    // font-style: normal;
 }
 .calc-container{
     // @include reuse-border;
@@ -52,6 +51,7 @@ $blu-bs-clr:rgba(46, 144, 153, 0.414);
     box-shadow: 5px 5px 10px 4px $blu-bs-clr,-5px -5px 17px 4px $wht-bs-clr;
 }
 .display-container{
+    // @include reuse-border;
     height: 15%;
     border-radius: 1rem;
     @include container-deco;
@@ -113,7 +113,6 @@ $blu-bs-clr:rgba(46, 144, 153, 0.414);
         display: flex;
 
         .big-lower{
-            // @include reuse-border;
             width: 75%;
             display: flex;
             flex-wrap: wrap;
@@ -122,7 +121,6 @@ $blu-bs-clr:rgba(46, 144, 153, 0.414);
         }
 
         .small-lower{
-            // @include reuse-border;
             flex: 1;
             @include flex-cent;
         }
@@ -163,4 +161,157 @@ button:active:focus,button:focus{
 }
 input{
     outline: none;
+}
+@media screen and (max-width:400px) {
+    .calc-container{
+        scale: 0.95;
+    }
+    .upper-div button{
+        margin-top: 5px;
+        width: 19%;
+        height: 26%;
+    }
+    .big-lower button{
+        margin-top: 5px;
+        width: 25.5%;
+        height: 40%;
+    }
+    .small-lower button{
+        height: 88%;
+        width: 67%;
+    }
+    button{
+        font-size: 2.1rem;
+    }
+}
+@media screen and (max-width:380px) {
+    .upper-div button{
+        margin-top: 5px;
+        width: 19%;
+        height: 25%;
+    }
+    .big-lower button{
+        margin-top: 5px;
+        width: 24.8%;
+        height: 37%;
+    }
+    .small-lower button{
+        height: 88%;
+        width: 67%;
+    }
+    .input-solution{
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width:364px) {
+    .upper-div button{
+        margin-top: 5px;
+        width: 18.7%;
+        height: 23%;
+    }
+    .big-lower button{
+        width: 24.2%;
+        height: 35%;
+    }
+    .small-lower button{
+        height: 85%;
+        width: 65%;
+    }
+    button{
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width:353px) {
+    .upper-div button{
+        margin-top: 5px;
+        width: 18.7%;
+        height: 22%;
+    }
+    .big-lower button{
+        width: 24.2%;
+        height: 34%;
+    }
+    .small-lower button{
+        height: 84%;
+        width: 63%;
+    }
+    button{
+        font-size: 1.9rem;
+    }
+}
+@media screen and (max-width:341px) {
+    .upper-div button{
+        margin-top: 8px;
+        width: 18.6%;
+        height: 21%;
+    }
+    .big-lower button{
+        margin-top: 7px;
+        width: 24%;
+        height: 32%;
+    }
+    .small-lower button{
+        height: 82%;
+        width: 62%;
+    }
+    button{
+        font-size: 1.8rem;
+    }
+}
+@media screen and (max-width:330px) {
+    .upper-div button{
+        margin-top: 10px;
+        width: 18.5%;
+        height: 20%;
+    }
+    .big-lower button{
+        margin-top: 7px;
+        width: 23.7%;
+        height: 30.4%;
+    }
+    .small-lower button{
+        height: 80%;
+        width: 61%;
+    }
+    button{
+        font-size: 1.7rem;
+    }
+}
+@media screen and (max-width:311px) {
+    .upper-div button{
+        margin-top: 12px;
+        width: 18.4%;
+        height: 18.3%;
+    }
+    .big-lower button{
+        margin-top: 9px;
+        width: 23.3%;
+        height: 28.1%;
+    }
+    .small-lower button{
+        height: 77%;
+        width: 60%;
+    }
+    button{
+        font-size: 1.6rem;
+    }
+}
+@media screen and (max-width:300px) {
+    .upper-div button{
+        margin-top: 14px;
+        width: 18.3%;
+        height: 18.1%;
+    }
+    .big-lower button{
+        margin-top: 11px;
+        width: 23.3%;
+        height: 27.5%;
+    }
+    .small-lower button{
+        height: 75%;
+        width: 58%;
+    }
+    button{
+        font-size: 1.55rem;
+    }
 }

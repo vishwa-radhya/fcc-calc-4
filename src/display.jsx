@@ -7,9 +7,9 @@ const Display=()=>{
    
 
     return(
-        <div className="display-container" id="display">
+        <div className="display-container" >
             <input type="text" readOnly className="input-query" value={solutionText} />
-            <input type="text"  readOnly className="input-solution" value={inputText}  />
+            <input type="text"  readOnly className="input-solution" value={inputText} id="display"  />
         </div>
     )
     
