@@ -63,43 +63,29 @@ export const InputProvider =({children})=>{
         let val;
         const operatorArray=['+','-','×','÷','%','.'];
         if(newText==='⇐'){
-
             val = inputText.slice(0,inputText.length-1);
-
         } 
 
         else{
 
         val = inputText+newText;
 
-            // if(operatorArray.includes(val[val.length-1]) && operatorArray.includes(val[val.length-2])){
-
-            //     val=val.slice(0,inputText.length);
-   
-            // }
             if((operatorArray.includes(val[val.length-1]) && operatorArray.includes(val[val.length-2]))&& (val[val.length-1]===val[val.length-2])){
                 val=val.slice(0,inputText.length);
             }
-
         }
 
         if(val[0]==='0'){
-
             val=val.slice(1);
-
         }
 
         if(val ==='+' || val ==='-' || val ==='×' || val ==='÷' || val ==='%'){
-
-            val=val.slice(1);
-            
+          val=val.slice(1); 
         }
 
         if(newText==='C'){ 
-
             val='0';
             setSolutionText('');
-
         }
 
         if(val==='.'){
