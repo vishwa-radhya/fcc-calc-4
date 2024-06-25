@@ -25,10 +25,10 @@ html{
     box-shadow: inset 5px 5px 6px 3px rgba(149, 181, 177, 0.634),inset -5px -5px 6px 3px $wht-bs-clr;
 }
 
-$calc-bg:rgb(214, 250, 252);
-// $calc-bg:rgb(242, 254, 255);
-$bg-clr:rgb(202, 255, 249);
-// $bg-clr:rgb(236, 255, 252);
+// $calc-bg:rgb(214, 250, 252);
+$calc-bg:rgb(242, 254, 255);
+// $bg-clr:rgb(202, 255, 249);
+$bg-clr:rgb(236, 255, 252);
 $wht-bs-clr:rgba(255, 255, 255, 0.527);
 $blu-bs-clr:rgba(46, 144, 153, 0.414);
 #root{
@@ -156,9 +156,9 @@ button{
 button:hover{
     filter: brightness(105%);
 }
-button:active:focus,button:focus{
-    box-shadow:inset -3px -3px 10px 3px $wht-bs-clr,inset  3px 3px 10px 3px $blu-bs-clr;
-}
+// button:active:focus,button:focus{
+//     box-shadow:inset -3px -3px 10px 3px $wht-bs-clr,inset  3px 3px 10px 3px $blu-bs-clr;
+// }
 input{
     outline: none;
 }
